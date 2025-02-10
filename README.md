@@ -1,6 +1,6 @@
 # CODE BLOCKS - React UI Library
 
-A modern, customizable React UI component library. This library provides reusable UI components organized by categories with the source code that you can use them directly in your projects and focus more on the logic.
+A modern, customizable React UI component library providing reusable UI components organized by categories. View and use the source code directly in your projects to focus more on business logic.
 
 ## Quick Start
 
@@ -23,158 +23,128 @@ npm install
 # Start development server
 npm run dev
 ```
-<br />
 
-# Adding New Components
+## Adding New Components
 
-Here's a step-by-step guide to adding new components to the library:
+Follow these steps to add new components to the library:
 
-## 1. Create the Component
+### 1. Create the Component
 
-Create the component in the appropriate category directory within the `/components` folder.
+Create your component in the appropriate category directory under `/src/components/`.
 
-### Directory Structure Example:
+Example component structure:
 ```
 src/components/
 ├── forms/
-│   └── SimpleLoginForm.jsx
-...
+│   └── ExampleForm.jsx
+├── navbars/
+│   └── ExampleNavbar.jsx
+└── sidebars/
+    └── ExampleSidebar.jsx
 ```
 
-### Example Component (`SimpleLoginForm.jsx`):
-```jsx
-import React from 'react';
+### 2. Add Component to Routes
 
-const SimpleLoginForm = () => {
-  return (
-    <div>
-      ..Implementation 
-    </div>
-  );
-};
+Import the component and its source code in the corresponding route file under `/src/routes/`. Use Vite's raw import feature to import the source code.
 
-export default SimpleLoginForm;
-```
-
----
-
-## 2. Create the Source Code
-
-In the `/component-sources` directory, create a file that exports the component's source code as a string.
-
-### Directory Structure Example:
-```
-src/component-sources/
-├── forms/
-│   └── SimpleLoginForm.js
-```
-
-### Example Source File (`SimpleLoginForm.js`):
+Example route file (`category-routes.jsx`):
 ```javascript
-export const simpleLoginFormSource = `import React from 'react';
+// Import Component
+import ExampleComponent from '../components/category/ExampleComponent';
 
-const SimpleLoginForm = () => {
-  return (
-    <div>
-      ..Implementation
-    </div>
-  );
-};
+// Import Component Source Code
+import exampleComponentSource from '../components/category/ExampleComponent.jsx?raw';
 
-export default SimpleLoginForm;`;
-```
-
----
-
-## 3. Add Component to Routes
-
-Import the component and its source code in the appropriate route configuration file within the `/routes` directory.
-
-### Directory Structure Example:
-```
-src/routes/
-├── form-routes.jsx
-├── index.jsx
-├── navbar-routes.jsx
-└── sidebar-routes.jsx
-```
-
-### Example Route Configuration (`form-routes.jsx`):
-```javascript
-// Import Components
-import SimpleLoginForm from '../components/forms/SimpleLoginForm';
-
-// Import Respective Source Codes
-import { simpleLoginFormSource } from '../component-sources/forms/SimpleLoginForm';
-
-export const formsRoutes = [
+export const categoryRoutes = [
   {
-    name: 'Login Form',
-    path: '/forms/login-form',
-    element: <SimpleLoginForm />,
-    source: simpleLoginFormSource,
-    description: 'Simple login form with email and password inputs.'
+    name: 'Example Component',
+    path: '/category/example-component',
+    element: <ExampleComponent />,
+    source: exampleComponentSource,
+    description: 'Brief description of the component functionality.'
   }
 ];
 ```
 
----
+### 3. Update Categories
 
-## 4. Update Categories
+Update the category details in `/src/constants/Index.jsx` to display the component on the homepage.
 
-Update the category details in the `/constants/index.jsx` file to display the component on the homepage.
-
-### Directory Structure Example:
-```
-src/constants/
-└── index.jsx
-```
-
-### Example Category Update:
 ```javascript
 const categories = [
   {
-    title: 'Forms',
-    path: '/forms',
+    title: 'Category Name',
+    path: '/category',
     components: [
-      { name: 'Login Form' },
+      { name: 'Example Component' },
+      // Add more components...
     ]
-  },
+  }
 ];
 
 export default categories;
 ```
 
-## 📝 Component Guidelines
+## Component Guidelines
+
+### Directory Structure
+```
+src/
+├── components/          # UI Components organized by category
+├── constants/          # Global constants and configurations
+├── pages/             # Page components and layouts
+├── routes/            # Route configurations for each category
+└── utils/             # Utility functions and shared code
+```
 
 ### Naming Conventions
-- Use PascalCase for component names (e.g., `LoginForm`, `BasicModal`)
-- Use kebab-case for routes (e.g., `login-form`, `basic-modal`)
-- Use descriptive names that indicate component functionality
+- Components: Use PascalCase (e.g., `LoginForm`, `MainNavbar`)
+- Files: Match component names (e.g., `LoginForm.jsx`)
+- Routes: Use kebab-case (e.g., `login-form`, `main-navbar`)
 
-### Component Structure
-- Each component should be in its own directory
-- Include any component-specific styles or utilities in the component directory
-- Export component as default from its main file
-- Include tests in the component directory
-
-### Styling Guidelines
-- Use Tailwind CSS classes for styling
-- Follow the dark emerald theme color scheme
-- Ensure components are responsive
-- Use CSS modules for component-specific styles if needed
-
-### Code Standards
-- Use functional components with hooks
-- Include PropTypes or TypeScript types
-- Add JSDoc comments for component documentation
+### Component Standards
+- Create functional components using React hooks
+- Use Tailwind CSS for styling
+- Ensure responsive design
+- Include proper PropTypes
+- Add JSDoc comments for documentation
+- Implement error handling where necessary
+- Keep components focused and maintainable
 - Follow React best practices
-- Include error handling where appropriate
 
-## 🤝 Contributing
+### Code Style
+```jsx
+import React from 'react';
+import PropTypes from 'prop-types';
+
+/**
+ * @component
+ * @description Brief description of the component
+ */
+const ExampleComponent = ({ prop1, prop2 }) => {
+  return (
+    <div className="tailwind-classes">
+      {/* Component Implementation */}
+    </div>
+  );
+};
+
+ExampleComponent.propTypes = {
+  prop1: PropTypes.string.isRequired,
+  prop2: PropTypes.number
+};
+
+export default ExampleComponent;
+```
+
+## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create your feature branch (`git checkout -b feature/ComponentName`)
+3. Commit your changes (`git commit -m 'Add ComponentName'`)
+4. Push to the branch (`git push origin feature/ComponentName`)
 5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
