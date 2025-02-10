@@ -7,6 +7,13 @@ const categories = [
       ]
     },
     {
+      title: 'Footers',
+      path: '/footers',
+      components: [
+        { name: 'Footer 1'}
+      ]
+    },
+    {
       title: 'Navbars',
       path: '/navbars',
       components: [

@@ -1,8 +1,8 @@
 // Import Components
 import SimpleSidebar from '../components/sidebars/SimpleSidebar';
 
-// Import Respective Source Codes
-import { simpleSidebarSource } from '../component-sources/sidebars/SimpleSidebar'; 
+// Import Component as Raw Source
+import simpleSidebarSource from '../components/sidebars/SimpleSidebar.jsx?raw'; 
 
 export const sidebarRoutes = [
   {

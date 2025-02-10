@@ -1,8 +1,8 @@
 // Import Components 
 import SimpleLoginForm from '../components/forms/SimpleLoginForm';
 
-// Import Respective Source Codes
-import { simpleLoginFormSource } from '../component-sources/forms/SimpleLoginForm';
+// Import Component as Raw source
+import simpleLoginFormSource from '../components/forms/SimpleLoginForm.jsx?raw';
 
 export const formsRoutes = [
   {

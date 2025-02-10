@@ -1,4 +1,5 @@
 import { formsRoutes } from './form-routes';
+import { footerRoutes } from './footer-routes';
 import { navbarRoutes } from './navbar-routes';
 import { sidebarRoutes } from './sidebar-routes';
 
@@ -7,6 +8,11 @@ export const allRoutes = [
     path: '/forms',
     name: 'Forms',
     routes: formsRoutes
+  },
+  {
+    path: '/footers',
+    name: 'Footers',
+    routes: footerRoutes
   },
   {
     path: '/navbars',

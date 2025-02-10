@@ -1,8 +1,8 @@
 // Import Components 
 import SimpleNavbar from '../components/navbars/SimpleNavbar';
 
-// Import Respective Source Codes
-import { simpleNavbarSource } from '../component-sources/navbars/SimpleNavbar';
+// Import Cmponent as Raw Source 
+import simpleNavbarSource from '../components/navbars/SimpleNavbar.jsx?raw';
 
 
 export const navbarRoutes = [
